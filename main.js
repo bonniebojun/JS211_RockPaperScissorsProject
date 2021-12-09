@@ -1,5 +1,4 @@
-// uses strict mode so strings are not coerced, variables are not hoisted, etc... 
-'use strict';
+
 
 // brings in the assert module for unit testing
 const assert = require('assert');
@@ -13,11 +12,48 @@ const rl = readline.createInterface({
 
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
+
+  if(hand1 === 'rock' && hand2 === 'scissors') {
+      return "Hand 1 wins!";}
+
+  if(hand1 === 'paper' && hand2 === 'rock') {
+        return "Hand 1 wins!";} 
+  
+  if(hand1 === 'scissors' && hand2 === 'paper') {
+          return "Hand 1 wins!";}
+
+  if(hand1 === 'rock' && hand2 === 'paper') {
+      return "Hand 2 wins!";}
+
+ 
+  if(hand1 === 'paper' && hand2 === 'scissors') {
+      return "Hand 2 wins!";}
+
+
+  if(hand1 === 'scissors' && hand2 === 'rock') {
+      return "Hand 2 wins!";}
+
+  if(hand1 === hand2) {
+      return "It's a tie!";}
+  
+  }
+  // If User1 input is 'rock' and User2 input is 'scissors', User1 wins.
+  // 1. If User1 input is 'rock' and User2 input is 'paper', User2 wins.
+  // 1. If User1 input is 'rock' and User2 input is 'rock', it's a tie.
+  // 1. If User1 input is 'paper' and User2 input is 'rock', User1 wins.
+  // 1. If User1 input is 'paper' and User2 input is 'scissors', User2 wins.
+  // 1. If User1 input is 'paper' and User2 input is 'paper', it's a tie.
+  // 1. If User1 input is 'scissors' and User2 input is 'paper', User1 wins.
+  // 1. If User1 input is 'scissors' and User2 input is 'rock', User2 wins.
+  // 1. If User1 input is 'scissors' and User2 input is 'scissors', it's a tie.
+  
 
   // Write code here
   // Use the unit test to see what is expected
 
-}
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -44,14 +80,14 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('scissors', 'scissors'), "It's a tie!");
     });
     it('should detect which hand won', () => {
-      assert.equal(rockPaperScissors('rock', 'paper'), "Hand two wins!");
-      assert.equal(rockPaperScissors('paper', 'scissors'), "Hand two wins!");
-      assert.equal(rockPaperScissors('rock', 'scissors'), "Hand one wins!");
+      assert.equal(rockPaperScissors('rock', 'paper'), "Hand 2 wins!");
+      assert.equal(rockPaperScissors('paper', 'scissors'), "Hand 2 wins!");
+      assert.equal(rockPaperScissors('rock', 'scissors'), "Hand 1 wins!");
     });
     it('should scrub input to ensure lowercase with "trim"ed whitepace', () => {
-      assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
-      assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
-      assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+      assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand 2 wins!");
+      assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand 2 wins!");
+      assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand 1 wins!");
     });
   });
 } else {
@@ -60,3 +96,6 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+
+
+const User1input = 'rock'; 

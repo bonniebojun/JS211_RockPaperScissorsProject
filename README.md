@@ -35,6 +35,7 @@ Build a function that will take in an input from a user then another input from 
 
 #### Code Planning R.P.S.
 
+
 1. User1 input of rock, paper, or scissors.
 1. User2 input of rock, paper, or scissors.
 1. Compare User1 input to User2 input.
